@@ -1,0 +1,30 @@
+---
+title: "LAB2"
+author: "Andres Gonzalez"
+date: "2023-03-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+choco <- read.csv("https://ds202-at-isu.github.io/labs/data/choco.csv")
+head(choco)
+```
+
+
+### Question set 1
+
+1. What is the overall number of chocolate bars used?
+
+The total number of chocolate bars used was 6 
+
+2.How does the number of ratings depend on the year? Draw a bar chart of the number of reports?
+
+```{r}
+
+```
+
+
