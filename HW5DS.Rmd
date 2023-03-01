@@ -1,0 +1,78 @@
+---
+title: "HW5-DS"
+author: "Evan Behrens"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(ggplot2)
+choco<-read.csv("choco.csv")
+str(choco)
+```
+#  Question set 1
+
+1)What is the overall number of chocolate bars rated?
+```{r}
+length(choco$Rating)
+```
+there are 1852 chocolate bars that have a rating
+
+
+2)How does the number of ratings depend on the year? Draw a bar chart of the number of reports.
+```{r}
+ggplot(choco , aes(x =Review.Date))+geom_bar() 
+```
+
+
+There was a steady increase in number of chocoaltes reviewed over the years and thenin 2015 the number of ratings decreased again.
+
+
+
+#  Question set 2
+
+Question 1
+How are ratings distributed? Draw a histogram of ratings and describe it. Don’t forget to mention outliers, if there are any.
+
+```{r}
+ggplot(choco, aes(x= Rating))+geom_histogram(bins = 15)
+```
+
+
+The distrubution of the ratings of chocolate bars is a little skewed to the left but almost normal, the center is around 3 and it is unimodal.The range spans from 1-5 and there appears to be an outlier at about a 5 rating, there could be outliers around 1 as well.
+
+
+Do ratings depend on the cocoa percentage of a chocolate bar?
+
+
+```{r}
+ggplot(choco, aes(x = Cocoa.Pct, y = Rating))+geom_jitter()
+```
+There does not appear to be any real correltation between cocoa percentage and its rating. The correlation plot does not appear to be strong nor poisitve or negative.
+
+How do ratings compare across different company locations? Focus on the three locations with the most ratings:
+
+
+This plot below is not useful to look at 
+```{r}
+ggplot(choco , aes(x = Company.Location, y = Rating))+geom_boxplot()+coord_flip()
+```
+
+
+```{r}
+top3 <- dplyr::filter(choco, Company.Location %in% c("U.S.A.", "France", "Canada"))
+ggplot( top3, 
+       aes(x = Company.Location, y = Rating)) + geom_boxplot() 
+
+
+```
+
+
+
+
+The ratings between these three locations is interesting. They all have a similar median around 3.25 but Canadas upper quartile goes up to 3.75  while france and USA only go to 3.5. Both Canada and USA have a range of 2 while france only has a range of 1.5. France and the USA have an outlier/s.
