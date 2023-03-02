@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 choco <- read.csv("https://ds202-at-isu.github.io/labs/data/choco.csv")
 head(choco)
+str(choco)
+library(ggplot2)
 ```
 
 
@@ -19,12 +21,43 @@ head(choco)
 
 1. What is the overall number of chocolate bars used?
 
-The total number of chocolate bars used was 6 
+```{r}
+length(choco$Rating)
+```
+There is 1852 bars used.
 
 2.How does the number of ratings depend on the year? Draw a bar chart of the number of reports?
 
+The more recent the year had more ratings than older years, except for 2017.
 ```{r}
-
+ggplot(choco, aes(x = Review.Date)) + geom_bar()
 ```
 
+# Question set 2
+1. How are ratings distributed? Draw a histogram of ratings and describe it. Don’t forget to mention outliers, if there are any.
+
+The ratings more around 3 with outliers at 1 and 5.
+
+```{r}
+ggplot(choco, aes(x = Rating)) + geom_histogram()
+```
+
+2. Do ratings depend on the cocoa percentage of a chocolate bar?
+
+Ratings do not depend on the percentage of cocoa because in the graph we 
+see that most of them get the same rating regardless of the cocoa percentage.
+
+```{r}
+ggplot(choco, aes(x = Cocoa.Pct, y = Rating)) + geom_jitter()
+```
+
+3. How do ratings compare across different company locations? Focus on the three locations with the most ratings:
+
+we see that there are higher ratings in canada, france is ratings that are in the middle, and The united states has ratings that lower than both canada and france.
+
+```{r}
+top3 <- dplyr::filter(choco, Company.Location %in% c("U.S.A.", "France", "Canada"))
+ggplot( top3, 
+       aes(x = Company.Location, y = Rating)) + geom_boxplot()
+```
 
