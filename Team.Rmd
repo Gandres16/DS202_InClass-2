@@ -17,14 +17,15 @@ library(ggplot2)
 ```
 
 # Andres Question
-The analysis I made from this data is comparing the ratings of the chocolate to the broad bean origin and seeing which origin of bean gives the highest ratings. From my barplot, we can see that Venezuela has the most instances of 4.0 rating with 18 data entries. When making this analysis I decided to just look at the top rated chocolates so I only looked at data entries that had a 4.0 rating.
+My question was which broad bean origin had the highest ratings. From my barplot, I found that Venezuela had the most highest ratings with 20 "4" ratings. When making this analysis I decided to just look at the top rated chocolates so I only looked at data entries that had a 4.0 rating.
+
 ```{r}
-origin <- choco[c("Broad.Bean.Origin", "Rating")]
-topO <- origin[origin$Rating == 4,]
+origin = choco[c("Broad.Bean.Origin", "Rating")]
+topO = origin[origin$Rating == 4,]
+
 ```
 
 ```{r}
-par(mar=c(7, 4.2, 4.2, 2.4))
 barplot(table(topO$Broad.Bean.Origin), las=2, cex.names=0.55)
 title(main="Top Places of Origin", xlab="", ylab="Count")
 mtext(text = 'Country of Origin',side=1, line= 5.5)
