@@ -22,7 +22,6 @@ My question was which broad bean origin had the highest ratings. From my barplot
 ```{r}
 origin = choco[c("Broad.Bean.Origin", "Rating")]
 topO = origin[origin$Rating == 4,]
-
 ```
 
 ```{r}
@@ -31,7 +30,7 @@ title(main="Top Places of Origin", xlab="", ylab="Count")
 mtext(text = 'Country of Origin',side=1, line= 5.5)
 ```
 ```{r}
-top_origin <- sum(topO == 'Venezuela')
+top_origin = sum(topO == 'Venezuela')
 top_origin
 ```
 
