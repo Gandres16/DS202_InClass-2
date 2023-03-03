@@ -13,15 +13,29 @@ knitr::opts_chunk$set(echo = TRUE)
 choco <- read.csv("https://ds202-at-isu.github.io/labs/data/choco.csv")
 head(choco)
 str(choco)
+library(tidyverse)
 library(ggplot2)
 ```
 
 # Andres Question
-My question was which broad bean origin had the highest ratings. From my barplot, I found that Venezuela had the most highest ratings with 20 "4" ratings. When making this analysis I decided to just look at the top rated chocolates so I only looked at data entries that had a 4.0 rating.
+My question was which broad bean origin had the highest ratings? From my barplot, I found that Venezuela had the most highest ratings with 20 "4" ratings. When making this analysis I decided to just look at the top rated chocolates so I only looked at data entries that had a 4.0 rating.
 
 ```{r}
 choco_filtered <- choco %>% filter(Rating==4)
 head(choco_filtered)
 ggplot(choco_filtered, aes(y = Broad.Bean.Origin)) + geom_bar()
 ```
+
+# Evan's Question
+What was the most common cocoa percentage in a 4 rating?
+
+I found that the most common percentage of cocoa used in chocolates rated 4 was right around 70. There are outliers at 60 and 90
+
+```{r}
+ggplot(choco_filtered, aes(x = Cocoa.Pct)) +
+  geom_histogram(bins = 20) +xlab("Cocoa Percent") +ylab("Count") +ggtitle("Cocoa Percentages From Rated 4 Chocolates")
+
+
+```
+
 
