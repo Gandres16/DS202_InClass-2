@@ -20,17 +20,8 @@ library(ggplot2)
 My question was which broad bean origin had the highest ratings. From my barplot, I found that Venezuela had the most highest ratings with 20 "4" ratings. When making this analysis I decided to just look at the top rated chocolates so I only looked at data entries that had a 4.0 rating.
 
 ```{r}
-origin = choco[c("Broad.Bean.Origin", "Rating")]
-topO = origin[origin$Rating == 4,]
-```
-
-```{r}
-barplot(table(topO$Broad.Bean.Origin), las=2, cex.names=0.55)
-title(main="Top Places of Origin", xlab="", ylab="Count")
-mtext(text = 'Country of Origin',side=1, line= 5.5)
-```
-```{r}
-top_origin = sum(topO == 'Venezuela')
-top_origin
+choco_filtered <- choco %>% filter(Rating==4)
+head(choco_filtered)
+ggplot(choco_filtered, aes(y = Broad.Bean.Origin)) + geom_bar()
 ```
 
