@@ -1,6 +1,6 @@
 ---
 title: "Team file"
-author: "Andres Gonzalez, Evan brehrens, Brandon Simelgor"
+author: "Andres Gonzalez, Evan behrens, Brandon Simelgor"
 date: "2023-03-02"
 output: html_document
 ---
@@ -47,3 +47,7 @@ I found their were two companys that recieved a 4 far more ferequently than any 
 ggplot(choco_filtered, aes(x = Company)) + geom_bar() + theme (axis.text.x = element_text(angle = 90))
 
 ```
+
+
+# Conclusion
+The workflow was very smooth. All of us were able to come up with our own questions and answer them using graphs, ggplot and filter out certain data. We used to git and were able to pull and push our data whenever one of us edited the document. we all uploaded our own work into the repository without issue. The workflow was smooth the whole time.
