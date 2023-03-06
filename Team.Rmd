@@ -38,4 +38,12 @@ ggplot(choco_filtered, aes(x = Cocoa.Pct)) +
 
 ```
 
+# Brandon's Question
+Which company most commonly recieved a 4 rating?
 
+I found their were two companys that recieved a 4 far more ferequently than any other company and those were Smooth Chocloter, with 10 The and Beschle (Felchlin) with 8 ratings.
+
+```{r}
+ggplot(choco_filtered, aes(x = Company)) + geom_bar() + theme (axis.text.x = element_text(angle = 90))
+
+```
