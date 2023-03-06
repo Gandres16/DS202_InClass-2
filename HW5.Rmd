@@ -1,0 +1,56 @@
+---
+title: "HW5"
+author: "Brandon Simelgor"
+date: "2023-03-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+choco <- read.csv("https://ds202-at-isu.github.io/labs/data/choco.csv")
+head(choco)
+str(choco)
+library(ggplot2)
+```
+
+### Question set 1
+
+1. What is the overall number of chocolate bars rated?
+```{r}
+length(choco$Rating)
+```
+The overall number of chocolate bars rated is 1852.
+
+2.How does the number of ratings depend on the year? Draw a bar chart of the number of reports.
+```{r}
+ggplot(choco, aes(x = Review.Date)) + geom_bar()
+```
+
+The more recent the year had higher ratings than older years, except for in 2015 when the ratings decreased again.
+
+# Question set 2
+1. How are ratings distributed? Draw a histogram of ratings and describe it. Don’t forget to mention outliers, if there are any.
+```{r}
+ggplot(choco, aes(x = Rating)) + geom_histogram()
+```
+
+The distribution is slightly left skewed, the center is around 3 and is unimodal with some outliers at 1 and 5.
+
+2. Do ratings depend on the cocoa percentage of a chocolate bar?
+```{r}
+ggplot(choco, aes(x = Cocoa.Pct, y = Rating)) + geom_jitter()
+```
+
+In the graph we can see that the percentage of cocoa does not change the ratings as their does ont appear to be any real correlation.
+
+3. How do ratings compare across different company locations? Focus on the three locations with the most ratings:
+```{r}
+top3 <- dplyr::filter(choco, Company.Location %in% c("U.S.A.", "France", "Canada"))
+ggplot( top3, 
+       aes(x = Company.Location, y = Rating)) + geom_boxplot()
+```
+
+Based on the graph we can see that out of the these three countries they all have a similar median near 3.25, but Canada has the highest upper quatrile while USA and Frances are similar, USA has the lowest lower quartile while Canada and Frances are similar.
